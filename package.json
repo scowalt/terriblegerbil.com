@@ -1,9 +1,19 @@
 {
-  "name": "terriblegerbil.com",
-  "version": "1.0.0",
+  "name": "terriblegerbil-com",
+  "type": "module",
   "private": true,
   "scripts": {
-    "dev": "npx wrangler dev",
-    "deploy": "npx wrangler deploy"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "bunx wrangler deploy"
+  },
+  "dependencies": {
+    "astro": "^5.5.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
   }
 }
