@@ -15,32 +15,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <div class="gerbil-container" id="gerbil" title="Click me!">
       <svg class="gerbil-svg" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
-        <!-- Body -->
         <ellipse cx="200" cy="310" rx="95" ry="110" fill="#d4a574"/>
         <ellipse cx="200" cy="310" rx="80" ry="95" fill="#e8c9a0"/>
 
-        <!-- Feet -->
         <ellipse cx="150" cy="410" rx="30" ry="14" fill="#c4956a" transform="rotate(-10, 150, 410)"/>
         <ellipse cx="250" cy="410" rx="30" ry="14" fill="#c4956a" transform="rotate(10, 250, 410)"/>
 
-        <!-- Arms -->
         <ellipse cx="120" cy="310" rx="18" ry="50" fill="#d4a574" transform="rotate(15, 120, 310)"/>
         <ellipse cx="280" cy="310" rx="18" ry="50" fill="#d4a574" transform="rotate(-15, 280, 310)"/>
-        <!-- Tiny paws -->
         <circle cx="112" cy="355" r="10" fill="#c4956a"/>
         <circle cx="288" cy="355" r="10" fill="#c4956a"/>
 
-        <!-- Head -->
         <ellipse cx="200" cy="170" rx="85" ry="80" fill="#d4a574"/>
         <ellipse cx="200" cy="180" rx="65" ry="55" fill="#e8c9a0"/>
 
-        <!-- Ears -->
         <ellipse cx="135" cy="105" rx="28" ry="42" fill="#d4a574" transform="rotate(-15, 135, 105)"/>
         <ellipse cx="135" cy="105" rx="18" ry="30" fill="#f0b8b8" transform="rotate(-15, 135, 105)"/>
         <ellipse cx="265" cy="105" rx="28" ry="42" fill="#d4a574" transform="rotate(15, 265, 105)"/>
         <ellipse cx="265" cy="105" rx="18" ry="30" fill="#f0b8b8" transform="rotate(15, 265, 105)"/>
 
-        <!-- Eyes -->
         <g class="gerbil-eye">
           <circle cx="172" cy="160" r="16" fill="white"/>
           <circle cx="175" cy="158" r="10" fill="#1a1a2e"/>
@@ -52,29 +45,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <circle cx="235" cy="154" r="4" fill="white"/>
         </g>
 
-        <!-- Nose -->
         <ellipse cx="200" cy="190" rx="8" ry="6" fill="#c4956a"/>
 
-        <!-- Mouth / mischievous grin -->
         <path d="M 178 200 Q 190 218 200 210 Q 210 218 222 200" stroke="#92400e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
 
-        <!-- Whiskers -->
         <line x1="155" y1="190" x2="110" y2="182" stroke="#92400e" stroke-width="1.5" opacity="0.6"/>
         <line x1="155" y1="196" x2="108" y2="198" stroke="#92400e" stroke-width="1.5" opacity="0.6"/>
         <line x1="245" y1="190" x2="290" y2="182" stroke="#92400e" stroke-width="1.5" opacity="0.6"/>
         <line x1="245" y1="196" x2="292" y2="198" stroke="#92400e" stroke-width="1.5" opacity="0.6"/>
 
-        <!-- Cheeks -->
         <circle cx="155" cy="195" r="14" fill="#f0b8b8" opacity="0.4"/>
         <circle cx="245" cy="195" r="14" fill="#f0b8b8" opacity="0.4"/>
 
-        <!-- Tail -->
         <path d="M 290 340 Q 340 310 350 260 Q 360 230 340 220" stroke="#d4a574" stroke-width="10" fill="none" stroke-linecap="round"/>
 
-        <!-- Belly spot -->
         <ellipse cx="200" cy="300" rx="40" ry="50" fill="#f0dcc0" opacity="0.6"/>
 
-        <!-- Seed in paws -->
         <ellipse cx="200" cy="360" rx="12" ry="8" fill="#92400e" transform="rotate(-20, 200, 360)"/>
         <ellipse cx="200" cy="360" rx="10" ry="6" fill="#a3692a" transform="rotate(-20, 200, 360)"/>
       </svg>
@@ -137,25 +123,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const bubble = document.getElementById("bubble")!;
     const gerbil = document.getElementById("gerbil")!;
 
-    // Show bubble on load
     setTimeout(() => bubble.classList.add("visible"), 500);
 
     gerbil.addEventListener("click", (e: MouseEvent) => {
-      // Pick a random quote (avoid repeats)
       let idx: number;
       do {
         idx = Math.floor(Math.random() * quotes.length);
       } while (idx === lastIndex);
       lastIndex = idx;
 
-      // Update bubble
       bubble.classList.remove("visible");
       setTimeout(() => {
         bubble.textContent = quotes[idx];
         bubble.classList.add("visible");
       }, 150);
 
-      // Spawn falling seeds
       const seedEmojis = ["\u{1F33C}", "\u{1F331}", "\u{1F95C}", "\u{1F33B}"];
       for (let i = 0; i < 5; i++) {
         const seed = document.createElement("div");
@@ -456,7 +438,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
   }
 
-  /* Eyes blink */
   @keyframes blink {
     0%,
     95%,
