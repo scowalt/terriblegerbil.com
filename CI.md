@@ -1,5 +1,17 @@
 # Continuous integration
 
+## Native Linux routing
+
+The workflow selects `ci_os: linux`, matching the supported Woodpecker 3.19
+agent setting `WOODPECKER_AGENT_LABELS=ci_os=linux`. Before merging this change,
+the parent must configure and read back that label and actual Linux ARM64
+platform on the current agent, then verify the label and Linux AMD64 platform
+on its replacement. Include no other OS or unsupported CPU; retain native platform
+reporting. This routing label is not a security boundary or hardware attestation.
+The original image index supports both targets, without a matrix or emulation.
+ARM64 rollout guidance below is historical, not native AMD64 proof. Commands,
+pins and status layout stay unchanged; actual AMD64 acceptance is separate.
+
 `.woodpecker.yaml` ports the sole authored Actions job, `no-comments`, to
 Woodpecker 3.19. It runs on branch pushes, tag pushes and pull requests without
 branch or path filters. The default native clone must retain Git metadata and
