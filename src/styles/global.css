@@ -1,1 +1,86 @@
-@import "tailwindcss";
+@layer theme, base, components;
+
+@layer theme {
+  :root {
+    --font-system: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+    --font-body: "Segoe UI", system-ui, -apple-system, sans-serif;
+
+    --color-white: #fff;
+    --color-sky-200: #bae6fd;
+    --color-sky-300: #7dd3fc;
+    --color-amber-100: #fef3c7;
+    --color-amber-400: #fbbf24;
+    --color-amber-700: #b45309;
+    --color-amber-800: #92400e;
+    --color-amber-900: #78350f;
+    --color-lime-400: #a3e635;
+    --color-lime-600: #65a30d;
+
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    --text-sm: 0.9rem;
+    --text-card: 0.95rem;
+    --text-card-title: 1.1rem;
+    --text-bubble: 1.15rem;
+    --text-seed: 1.5rem;
+    --text-subtitle: clamp(1rem, 3vw, 1.5rem);
+    --text-title: clamp(2.5rem, 8vw, 5rem);
+
+    --radius-card: 16px;
+    --radius-bubble: 20px;
+    --radius-cloud: 50px;
+
+    --shadow-card: 0 4px 12px rgba(146, 64, 14, 0.1);
+    --shadow-card-hover: 0 8px 24px rgba(146, 64, 14, 0.15);
+    --shadow-gerbil: drop-shadow(4px 8px 12px rgba(0, 0, 0, 0.15));
+    --shadow-title: 3px 3px 0 var(--color-amber-400);
+  }
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    box-sizing: border-box;
+    border: 0 solid;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    line-height: 1.5;
+    font-family: var(--font-system);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--color-amber-100);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  svg {
+    display: block;
+    vertical-align: middle;
+  }
+}
