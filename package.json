@@ -9,7 +9,7 @@
     "deploy": "bunx wrangler deploy"
   },
   "dependencies": {
-    "astro": "^5.18.2"
+    "astro": "^7.4.11"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
