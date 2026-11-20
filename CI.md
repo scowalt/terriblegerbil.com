@@ -4,13 +4,12 @@
 
 The workflow selects `ci_os: linux`, matching the supported Woodpecker 3.19
 agent setting `WOODPECKER_AGENT_LABELS=ci_os=linux`. Before merging this change,
-the parent must configure and read back that label and actual Linux ARM64
-platform on the current agent, then verify the label and Linux AMD64 platform
-on its replacement. Include no other OS or unsupported CPU; retain native platform
-reporting. This routing label is not a security boundary or hardware attestation.
-The original image index supports both targets, without a matrix or emulation.
-ARM64 rollout guidance below is historical, not native AMD64 proof. Commands,
-pins and status layout stay unchanged; actual AMD64 acceptance is separate.
+the parent must configure and read back that label and the `linux/amd64`
+platform on the only agent, `woodpecker` (x86-64). Include no other OS or
+unsupported CPU; retain native platform reporting. This routing label is not a
+security boundary or hardware attestation. The original image index includes a
+`linux/amd64` manifest, without a matrix or emulation. Commands, pins and status
+layout stay unchanged.
 
 `.woodpecker.yaml` ports the sole authored Actions job, `no-comments`, to
 Woodpecker 3.19. It runs on branch pushes, tag pushes and pull requests without
@@ -28,7 +27,7 @@ uv run --no-project --python 3.14 --with-requirements .comment-policy/requiremen
 
 The original job's **10-minute budget must be configured and verified using the
 native repository timeout setting before activation**; it is not a YAML step
-key. Use the existing Linux/ARM64 agent and resource limits. No secrets, host
+key. Use the existing `linux/amd64` agent and resource limits. No secrets, host
 mounts, privileged execution or extra services are needed. Keep fork approval,
 `allowed_users: []` and all trust flags false; do not automatically run unapproved
 external fork code.
@@ -50,7 +49,7 @@ nor deployment equivalence.
 
 Keep `.github/workflows/no-comments.yml` byte-identical for rollback and Actions
 enabled until the separate merger reviews the source and the parent verifies a
-normal delivery PR plus the resulting actual main push on native ARM64, with
+normal delivery PR plus the resulting actual main push on native `linux/amd64`, with
 matching exact-revision GitHub feedback. Preserve unrelated required checks and
 deployment branches/controllers. Local checks and strict CLI lint are not hosted
 proof. Only the parent performs serialized activation, required-check changes
